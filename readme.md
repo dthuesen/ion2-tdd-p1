@@ -90,7 +90,7 @@ Both test the same thing but the TDD approach has knowledge of the internals of 
 
 That's it.
 
-## The process TDD and BDD tests ar following
+## The process of TDD and BDD tests ar following
 1. Write a test
 2. Run the test (it should fail)
 3. Write the code to satisfy the test 
