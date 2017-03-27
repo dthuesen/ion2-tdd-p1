@@ -97,5 +97,11 @@ That's it.
 4. Test again (it should pass)
 5. Refactor as necessary
 
+## How to solve some issues 
+
+Compilation errors in @types/jasmine v.2.5.42
+-> Update TypeScript to newer version e.g. v2.2.2
+
+
 
 
