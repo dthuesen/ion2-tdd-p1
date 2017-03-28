@@ -13,7 +13,7 @@ export class ProductPage {
     public productsService: Products) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductPage');
+    this.productsService.load();
   }
 
 }

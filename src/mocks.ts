@@ -61,3 +61,10 @@ export class MenuMock {
     });
   }
 }
+
+
+export class ProductsMock {
+  public products: any = [
+    { "title": "Cool shoes", "description": "Isn\'t it obvious?", "price": "39.99" }
+  ]
+}

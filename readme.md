@@ -124,6 +124,11 @@ That's it.
       <pre><code>
         beforeEach(() => {
             
+             |    // This instatiation only works because the actual service
+             |    // has no dependencies (e.g. Http). With dependencies TestBed 
+            \|/   // is needed to inject these dependencies
+             V
+ 
             productsService = new Products();
             
         });
@@ -143,14 +148,46 @@ That's it.
 
 
 ## Writing a test for a more realistic service with HTTP request
+### But befor starting: ```MockBackend?```, ```BaseRequestOptions?```,Prima, ich muss ma ```useFactory?```
 
+In this test for the service the provided Http won't be used in its normal form. The implementation will be modified by using ```useFactory```. By that only the service will betetsted and not the external service as an isolated case.
+The ```useFactory``` uses a service provided by Angular called ```MockBackend```. This is for testing purpose and alows to create a fake backend which send fake responses. These responses are still performed asynchronously, like a normal HTTP request would be.
+When mocking the backend like this, any response can be used for testing. In this case a ```JSON``` string is used hard coded. The mock response is setup like this:
 
+        <pre><code>
+          mockBackend.connections.subscribe( (connection) => {
+            connection.mockRespond( new Response( new ResponseOptions( {
+              body: mockResponse
+            })));
+          })
+        </pre></code>
 
-      <pre><code>
-      </pre></code>
+This has effects on the test of the products page, too. With the simple test mentioned above the Products service is referenced and checks its data immediately. but the data isn't available immediatle, becaus it's loaded asynchronously. It would make the former test fail. Now the correct approach should isolate the unit test as much as possible. A mock for the Products service is needed, so this specific component will only be tested. 
+
+A ProductsMock is needed in src/mocks:
+
+        <pre><code>
+          export class ProductsMock {
+            public products: any = [
+              { "title": "Cool shoes", "description": "Isn\'t it obvious?", "price": "39.99" }
+            ]
+          }
+        </pre></code>
+
+And this mock has to be imported into ```product.spec.ts```and declared in the providers array like so:
+
+        <pre><code>
+          {
+            provide: Products,
+            useClass: ProductsMock
+          }
+        </pre></code>
+
+This takes out the provided service and follows the approach to fake the HTTP backend and swap the real Products with a fake ProductsMock by using ```useClass```.
 
 
 ## How to solve some issues 
+(actually there's only one but I think more to come ;-) 
 
 1. Compilation errors in @types/jasmine v.2.5.42
 
