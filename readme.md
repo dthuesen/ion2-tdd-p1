@@ -4,7 +4,7 @@
 
 The TDD approach might be: 
 
-```it('should remove the last element in the array)``` 
+```it('should remove the last element in the array')``` 
 
 whereas the BDD approach might be described like 
 
@@ -99,8 +99,9 @@ That's it.
 
 ## How to solve some issues 
 
-Compilation errors in @types/jasmine v.2.5.42
--> Update TypeScript to newer version e.g. v2.2.2
+1. Compilation errors in @types/jasmine v.2.5.42
+
+    => Update TypeScript to newer version e.g. v2.2.2
 
 
 
