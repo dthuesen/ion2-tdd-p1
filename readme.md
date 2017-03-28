@@ -148,7 +148,7 @@ That's it.
 
 
 ## Writing a test for a more realistic service with HTTP request
-### But befor starting: ```MockBackend?```, ```BaseRequestOptions?```,Prima, ich muss ma ```useFactory?```
+### But befor starting: ```MockBackend?```, ```BaseRequestOptions?```, ```useFactory?```
 
 In this test for the service the provided Http won't be used in its normal form. The implementation will be modified by using ```useFactory```. By that only the service will betetsted and not the external service as an isolated case.
 The ```useFactory``` uses a service provided by Angular called ```MockBackend```. This is for testing purpose and alows to create a fake backend which send fake responses. These responses are still performed asynchronously, like a normal HTTP request would be.
