@@ -1,3 +1,30 @@
-page-product {
+.ios, .md {
+
+  page-product {
+
+    ion-item {
+      background-color: #fff;
+      width: 92%;
+      margin: 20px auto;
+      padding: 20px;
+      position: relative;
+
+      h3 {
+        font-size: 1.3em;
+        color: #4682B4;
+      }
+
+      span {
+        color: #607B8B;
+        font-size: 0.8em;
+        font-weight: 600;
+        position: absolute;
+        top: 20 px;
+        right: 20px;
+      }
+    }
+
+  }
 
 }
+
