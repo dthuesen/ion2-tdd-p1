@@ -12,7 +12,7 @@ whereas the BDD approach might be described like
 
 Both test the same thing but the TDD approach has knowledge of the internals of the implementation. BDD tests the desired behavior.
 
-## Anatomy of a test with Jasmine and TestBed
+## Anatomy of a basic test with Jasmine and TestBed
 
 
 <strong>The configuration of the test </strong> in the file ```test.ts``` has ten steps to follow (in this app):
@@ -96,6 +96,59 @@ That's it.
 3. Write the code to satisfy the test 
 4. Test again (it should pass)
 5. Refactor as necessary
+
+
+## Beginner example of writing a test for a static "service" (provider in Ionic speak), the starting point to a real world service with e.g. HTTP requests
+
+1. Import all necessary dependencies:
+      <pre><code>
+        import { Products } from './products';
+        import { NavController, NavParams } from 'ionic-angular';
+      </pre></code>
+2. Declare a variable for the instance of the service which should be tested:
+      <pre><code>
+        let productsService;
+      </pre></code>
+3. Write the test suite function:
+      <pre><code>
+        describe('Provider: Products', () => {
+          //
+          // beforeEach() ...
+          //
+          // it()...
+          //
+          //...
+        });
+      </pre></code>
+4. In that test suite write the ```beforeEach()``` function:
+      <pre><code>
+        beforeEach(() => {
+            
+            productsService = new Products();
+            
+        });
+      </pre></code>
+5. And the ```it```function - the test case - as well:
+      <pre><code>
+        it('should have a non empty array called products', () =>{
+            
+          let products = productsService.products;
+          
+          expect(Array.isArray(products)).toBeTruthy();
+          expect(products.length).toBeGreaterThan(0);
+          
+        })
+      </pre></code>
+6. Done
+
+
+## Writing a test for a more realistic service with HTTP request
+
+
+
+      <pre><code>
+      </pre></code>
+
 
 ## How to solve some issues 
 
