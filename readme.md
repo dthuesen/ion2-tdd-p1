@@ -18,8 +18,50 @@ Both test the same thing but the TDD approach has knowledge of the internals of 
 <strong>The configuration of the test </strong> in the file ```test.ts``` has ten steps to follow (in this app):
 
 1. Import required dependencies
+
+      <pre><code>
+        import './polyfills.ts';
+
+        import 'zone.js/dist/long-stack-trace-zone';
+        import 'zone.js/dist/proxy.js';
+        import 'zone.js/dist/sync-test';
+        import 'zone.js/dist/jasmine-patch';
+        import 'zone.js/dist/async-test';
+        import 'zone.js/dist/fake-async-test';
+
+        import { FormsModule,
+                ReactiveFormsModule } from '@angular/forms';
+        import { getTestBed,
+                TestBed } from '@angular/core/testing';
+        import { BrowserDynamicTestingModule,
+                platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
+        import { App,
+                Config,
+                Form,
+                IonicModule,
+                Keyboard,
+                DomController,
+                MenuController,
+                NavController,
+                Platform } from 'ionic-angular';
+        import { ConfigMock } from './mocks';
+      </code></pre>
+
 2. Declare the not yet available typing for Karma
+
+      <pre><code>
+        declare var __karma__: any;
+        declare var require: any;
+      </code></pre>
+
 3. Prevent Karma from running prematurely
+
+      <pre><code>
+        __karma__.loaded = function (): void {
+          // noop
+        }
+      </code></pre>
+
 4. Initialize the Angular testing environment:
 
     <pre><code> 
