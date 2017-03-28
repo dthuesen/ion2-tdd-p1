@@ -84,9 +84,9 @@ Both test the same thing but the TDD approach has knowledge of the internals of 
     </code></pre>
 
 
-<strong>A test itself has more or less this shape: </strong>
+<strong>A unit test itself has more or less this shape: </strong>
 
-1. Import als required dependencies. Even the providers used in the specific component (e.g. StatusBar or SplashScreen) 
+1. Import all required dependencies. Even the providers used in the specific component (e.g. StatusBar or SplashScreen) 
 2. Add variables for <b>comp</b>, e.g ```let comp: MyApp;```, and <b>fixtures</b>, e.g. ```let fixture: ComponentFixture<MyApp>;```
 3. Write the test suite with  ```describe() {}```
 4. In the test suite write the beforeEach() function with the async parameter (this wraps a function in an asynchronous test zone. The test will automatically complete when all asynchronous calls within this zone are done.) and its callback function with ```TestBed.configureTestingModule()``` for configuration of the TestBed (with 'declarations', 'providers' and 'imports'): 
